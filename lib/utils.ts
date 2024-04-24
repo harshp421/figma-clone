@@ -119,3 +119,20 @@ export const exportToPdf = () => {
   // download the pdf
   doc.save("canvas.pdf");
 };
+
+export const exportToJpeg = () => {
+  const canvas = document.querySelector("canvas");
+
+  if (!canvas) return;
+
+  // Create a temporary anchor element
+  const anchor = document.createElement("a");
+
+  // Set the download attribute and href with the canvas data URL
+  anchor.download = "canvas.jpeg";
+  anchor.href = canvas.toDataURL("image/jpeg");
+
+  // Trigger a click event on the anchor element to start the download
+  anchor.click();
+};
+
