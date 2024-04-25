@@ -39,6 +39,8 @@ export const createEllipse = (pointer: PointerEvent) => {
     left: pointer.x,
     top: pointer.y,
     radius: 80,
+    rx:25,
+    ry:20,
     fill: "#aabbcc",
     objectId: uuidv4(),
   } as any);

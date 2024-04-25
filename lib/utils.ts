@@ -1,6 +1,8 @@
 import jsPDF from "jspdf";
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
+import { useStorage } from "@/liveblocks.config";
+import { root } from "postcss";
 
 const adjectives = [
   "Happy",
@@ -136,3 +138,28 @@ export const exportToJpeg = () => {
   anchor.click();
 };
 
+
+  export const exportToJson = () => {
+    const canvas = document.querySelector("canvas");
+
+    if (!canvas) return;
+     console.log(canvas)
+    // Get the canvas data as JSON
+    const canvasData = {
+      width: canvas.width,
+      height: canvas.height,
+      dataUrl: canvas.toDataURL(),
+    };
+
+    // Create a temporary anchor element
+    const anchor = document.createElement("a");
+
+    // Set the download attribute and href with the canvas data URL
+    anchor.download = "canvas.json";
+    anchor.href = `data:application/json;charset=utf-8,${encodeURIComponent(JSON.stringify(canvasData))}`;
+
+    // Trigger a click event on the anchor element to start the download
+    anchor.click();
+  };
+
+ 
