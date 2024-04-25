@@ -23,6 +23,7 @@ import { LeftSidebar, Live, Navbar, RightSidebar } from "@/components/index";
 import { handleImageUpload } from "@/lib/shapes";
 import { defaultNavElement } from "@/constants";
 import { ActiveElement, Attributes } from "@/types/type";
+import { root } from "postcss";
 
 const Home = () => {
   /**
@@ -197,6 +198,7 @@ const Home = () => {
     // if the passed object is null, return
     if (!object) return;
     const { objectId } = object;
+   
 
     /**
      * Turn Fabric object (kclass) into JSON format so that we can store it in the
@@ -206,7 +208,7 @@ const Home = () => {
     shapeData.objectId = objectId;
 
     const canvasObjects = storage.get("canvasObjects");
-    console.log(canvasObjects,"canvas object")
+   
     /**
      * set is a method provided by Liveblocks that allows you to set a value
      *
